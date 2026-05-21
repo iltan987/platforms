@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
         {children}
-        <SpeedInsights />
+        {process.env.VERCEL && <SpeedInsights />}
       </body>
     </html>
   );

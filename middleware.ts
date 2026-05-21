@@ -50,10 +50,10 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/', request.url));
     }
 
-    // For the root path on a subdomain, rewrite to the subdomain page
-    if (pathname === '/') {
-      return NextResponse.rewrite(new URL(`/s/${subdomain}`, request.url));
-    }
+    // Forward subdomain to the page via request header
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-subdomain', subdomain);
+    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
   // On the root domain, allow normal access
