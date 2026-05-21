@@ -1,0 +1,28 @@
+# dependencies / build output (NOT inherited from .gitignore — docker reads only this file)
+node_modules
+.next
+
+# generated files
+*.tsbuildinfo
+next-env.d.ts
+
+# secrets
+.env
+.env.*
+*.pem
+
+# vcs / editor
+.git
+.gitignore
+.gitattributes
+.vscode
+
+# docker itself
+Dockerfile
+.dockerignore
+docker-compose*.yml
+compose*.yml
+
+# docs / logs
+*.md
+.pnpm-debug.log*
